@@ -33,10 +33,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -45,4 +48,29 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Dependencia to print images into image view and resize
+    implementation (libs.glide)
+
+    //Dependencie for custom button and toolbar
+    implementation(libs.material.v180)
+
+    //Dependencie for rounded image
+    implementation(libs.circleimageview)
+
+    //View model dependecies
+    implementation(libs.androidx.activity.v161)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.fragment.ktx)
+    debugImplementation(libs.androidx.fragment.testing)
+
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
+    //Swipe refresh
+    implementation(libs.androidx.swiperefreshlayout)
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RoundedButton">
+        <item name="android:background">@drawable/rounded_button</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="roundimage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+        <item name="color">@color/black</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="windowActionBar">false</item>
+    </style>
+</resources>
