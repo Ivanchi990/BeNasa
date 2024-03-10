@@ -1,5 +1,13 @@
 <resources>
+    //General
     <string name="app_name">BeNasa</string>
+
+    //APOD
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet. Sed dolore sunt ut iusto repellendus vel ullam molestiae non perspiciatis velit sit earum voluptatibus et maxime labore. Qui optio illo et aperiam maiores in autem enim est magni itaque. Hic quibusdam ipsa quo illo beatae in assumenda enim cum excepturi sunt qui similique illo vel aperiam nihil? Nam omnis nesciunt non natus nihil eos ducimus atque ut laudantium aliquid et saepe quia At possimus rerum est itaque laborum.</string>
     <string name="image_apod_desc">Astronomic image of the day</string>
+    <string name="apod_title">Astronomic image of the day</string>
+    <string name="apod_author">Author: </string>
+
+    //API
+    <string name="api_key">7qVRXIEKp0yFcxd0DNPZ6NGgi5am9mfLURTacHgg</string>
 </resources>

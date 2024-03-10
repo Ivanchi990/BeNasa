@@ -18,17 +18,21 @@ class MainActivity : AppCompatActivity()
         enableEdgeToEdge()
         createInsetsBinding()
 
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
     }
 
     private fun createInsetsBinding()
     {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
