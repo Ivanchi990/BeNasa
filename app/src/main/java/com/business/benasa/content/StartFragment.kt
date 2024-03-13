@@ -43,7 +43,8 @@ class StartFragment : Fragment()
                 {
                     binding.apodTitle.text = response.body()!!.title
                     val copyright = response.body()!!.copyright?.replace("\n", "")
-                    binding.apodAuthor.text = "${binding.apodAuthor.text} $copyright Date: ${response.body()!!.date}"
+                    binding.apodAuthor.text = "${binding.apodAuthor.text} $copyright"
+                    binding.apodDate.text = "${binding.apodDate.text} ${response.body()!!.date}"
 
                     Glide.with(binding.root)
                         .load(Uri.parse(response.body()!!.hdurl))
