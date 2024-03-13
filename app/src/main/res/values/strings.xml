@@ -8,6 +8,7 @@
     <string name="apod_title">Astronomic image of the day</string>
     <string name="apod_author">Author: </string>
     <string name="apod_date">Date: </string>
+    <string name="apod_button">Start adventure</string>
 
     //API
     <string name="api_key">7qVRXIEKp0yFcxd0DNPZ6NGgi5am9mfLURTacHgg</string>
