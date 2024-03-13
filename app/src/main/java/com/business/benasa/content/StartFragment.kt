@@ -1,11 +1,15 @@
 package com.business.benasa.content
 
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.PopupWindow
 import com.bumptech.glide.Glide
 import com.business.benasa.R
 import com.business.benasa.databinding.FragmentStartBinding
@@ -30,8 +34,59 @@ class StartFragment : Fragment()
         binding = frag
 
         requestApod()
+        configOnClicks()
 
         return frag.root
+    }
+
+    private fun configOnClicks()
+    {
+        binding.apodImage.setOnClickListener {
+            val drawable = binding.apodImage.drawable
+            showImageFullScreen(drawable)
+        }
+
+        binding.btnNext.setOnClickListener {
+            showActions()
+        }
+    }
+
+    private fun showActions()
+    {
+        val actionsFragment = ContentFragment()
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fvContent, actionsFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    private fun showImageFullScreen(drawable: Drawable?)
+    {
+        drawable?.let {
+            val imageView = ImageView(context)
+            imageView.setImageDrawable(it)
+            imageView.layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            imageView.adjustViewBounds = true
+            imageView.scaleType = ImageView.ScaleType.FIT_CENTER
+
+            val popupWindow = PopupWindow(
+                imageView,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                true
+            )
+
+            popupWindow.setBackgroundDrawable(resources.getDrawable(R.color.black))
+
+            imageView.setOnClickListener {
+                popupWindow.dismiss()
+            }
+
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+        }
     }
 
     private fun requestApod() {
