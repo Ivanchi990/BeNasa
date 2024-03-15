@@ -1,5 +1,6 @@
 package com.business.benasa.content
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.business.benasa.R
 import com.business.benasa.databinding.FragmentStartBinding
 import com.business.benasa.entities.Apod
 import com.business.benasa.nasapi.ApiInstance
+import io.getstream.photoview.PhotoView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,17 +65,17 @@ class StartFragment : Fragment()
     private fun showImageFullScreen(drawable: Drawable?)
     {
         drawable?.let {
-            val imageView = ImageView(context)
-            imageView.setImageDrawable(it)
-            imageView.layoutParams = ViewGroup.LayoutParams(
+            val photoView = PhotoView(requireContext())
+            photoView.setImageDrawable(it)
+            photoView.layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
-            imageView.adjustViewBounds = true
-            imageView.scaleType = ImageView.ScaleType.FIT_CENTER
+            photoView.adjustViewBounds = true
+            photoView.scaleType = ImageView.ScaleType.FIT_CENTER
 
             val popupWindow = PopupWindow(
-                imageView,
+                photoView,
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 true
@@ -81,7 +83,7 @@ class StartFragment : Fragment()
 
             popupWindow.setBackgroundDrawable(resources.getDrawable(R.color.black))
 
-            imageView.setOnClickListener {
+            photoView.setOnClickListener {
                 popupWindow.dismiss()
             }
 
@@ -92,6 +94,7 @@ class StartFragment : Fragment()
     private fun requestApod() {
         ApiInstance.api.getApod("planetary/apod?api_key=${getString(R.string.api_key)}").enqueue(object :
             Callback<Apod> {
+            @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call<Apod>, response: Response<Apod>)
             {
                 if (response.body() != null)
@@ -107,6 +110,8 @@ class StartFragment : Fragment()
                         .fitCenter().into(binding.apodImage)
 
                     binding.apodDescription.text = response.body()!!.explanation
+
+                    binding.progressBar.visibility = View.GONE
                 }
             }
 

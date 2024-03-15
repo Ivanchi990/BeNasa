@@ -76,4 +76,7 @@ dependencies {
 
     //Swipe refresh
     implementation(libs.androidx.swiperefreshlayout)
+
+    //Zoom image
+    implementation(libs.photoview)
 }

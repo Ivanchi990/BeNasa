@@ -7,107 +7,128 @@
     android:background="@color/blue"
     tools:context=".content.StartFragment">
 
-    <TextView
-        android:id="@+id/apod_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/apod_title"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/apodImage"
-        android:layout_width="255dp"
-        android:layout_height="155dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="15dp"
-        android:contentDescription="@string/image_apod_desc"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apod_title"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <androidx.cardview.widget.CardView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:backgroundTint="@color/light_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnNext"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apodImage">
-
+        android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/apod_author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/apod_author"
-                android:textColor="@color/white"
-                android:textSize="25sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/apod_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/apod_title"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/apod_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/apod_date"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:textSize="23sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/apod_author" />
+        <ImageView
+            android:id="@+id/apodImage"
+            android:layout_width="255dp"
+            android:layout_height="155dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:contentDescription="@string/image_apod_desc"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/apod_title"
+            tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:id="@+id/apodDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:padding="10dp"
-                android:text="@string/lorem_ipsum"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/apod_date" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/light_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnNext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/apodImage">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/apod_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/apod_author"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/apod_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/apod_date"
+                    android:textColor="@color/white"
+                    android:textSize="23sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/apod_author" />
+
+                <TextView
+                    android:id="@+id/apodDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/apod_date"
+                    tools:text="@string/lorem_ipsum" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNext"
+            android:layout_width="378dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/apod_button"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleColor="#33AAAAAA"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNext"
-        android:layout_width="378dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/apod_button"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:backgroundTint="@android:color/transparent"
-        app:cornerRadius="8dp"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="#33AAAAAA"
-        app:strokeColor="@color/white"
-        app:strokeWidth="2dp" />
-
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
